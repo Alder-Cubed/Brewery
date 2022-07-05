@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
  * <p>Always one item added at a time.
  * <p>If needed use the caudrons add method to manually add more Items
  */
-public class IngredientAddEvent extends PlayerEvent implements Cancellable {
+public class IngedientAddEvent extends PlayerEvent implements Cancellable {
 	private static final HandlerList handlers = new HandlerList();
 	private final Block block;
 	private final BCauldron cauldron;
@@ -28,7 +28,7 @@ public class IngredientAddEvent extends PlayerEvent implements Cancellable {
 	private boolean cancelled;
 	private boolean takeItem = true;
 
-	public IngredientAddEvent(Player who, Block block, BCauldron bCauldron, ItemStack ingredient, RecipeItem rItem) {
+	public IngedientAddEvent(Player who, Block block, BCauldron bCauldron, ItemStack ingredient, RecipeItem rItem) {
 		super(who);
 		this.block = block;
 		cauldron = bCauldron;

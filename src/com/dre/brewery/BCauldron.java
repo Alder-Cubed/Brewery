@@ -1,6 +1,6 @@
 package com.dre.brewery;
 
-import com.dre.brewery.api.events.IngredientAddEvent;
+import com.dre.brewery.api.events.IngedientAddEvent;
 import com.dre.brewery.filedata.BConfig;
 import com.dre.brewery.recipe.BCauldronRecipe;
 import com.dre.brewery.recipe.RecipeItem;
@@ -148,7 +148,7 @@ public class BCauldron {
 				BCauldron.bcauldrons.put(block, bcauldron);
 			}
 
-			IngredientAddEvent event = new IngredientAddEvent(player, block, bcauldron, ingredient.clone(), rItem);
+			IngedientAddEvent event = new IngedientAddEvent(player, block, bcauldron, ingredient.clone(), rItem);
 			P.p.getServer().getPluginManager().callEvent(event);
 			if (!event.isCancelled()) {
 				bcauldron.add(event.getIngredient(), event.getRecipeItem());
