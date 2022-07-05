@@ -16,6 +16,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -149,6 +150,10 @@ public class CommandListener implements CommandExecutor {
 
 			cmdDrink(sender, args);
 
+		} else if (cmd.equalsIgnoreCase("recipes") || cmd.equalsIgnoreCase("book") || cmd.equalsIgnoreCase("guide")) {
+
+			cmdRecipes(sender);
+
 		} else {
 
 			if (p.getServer().getPlayerExact(cmd) != null || BPlayer.hasPlayerbyName(cmd)) {
@@ -174,6 +179,164 @@ public class CommandListener implements CommandExecutor {
 		}
 
 		return true;
+	}
+
+	private void cmdRecipes(CommandSender sender) {
+		Player player = sender.getServer().getPlayer(sender.getName());
+		if (player == null) return;
+		ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+		BookMeta bookMeta = (BookMeta) book.getItemMeta();
+		assert bookMeta != null;
+		bookMeta.setTitle("Book of Brewing");
+		bookMeta.setAuthor("Bob Brewman");
+		bookMeta.addPage(
+			"\n\n\n			Book of Brew",
+			"Index\n" +
+				"Setting Up.............................3\n" +
+				"Cider......................................11\n" +
+				"Beer.......................................13\n" +
+				"Wine.........................................16\n" +
+				"Mead.......................................18\n" +
+				"Punch....................................20\n" +
+				"Liquor...................................21",
+			"Chapter 1: Setting Up\n" +
+				"\n" +
+				"A brewery setup needs to have the following things:\n" +
+				"\n" +
+				"- brewing cauldron\n" +
+				"- still (optional)\n" +
+				"- aging barrels\n" +
+				"- brew sealing table\n" +
+				"- sink\n" +
+				"\n" +
+				"More on these on the following pages...",
+			"The Brewing Cauldron\n" +
+				"\n" +
+				"The brewing cauldron is where your brew's ingredients are mixed with yeast to ferment into alcohol. Simply place a cauldron above a heat source, such as fire, and add water to it. Right-click ingredients into the cauldron to add them.",
+			"The Brewing Cauldron\n" +
+				"\n" +
+				"Right-click the cauldron with a clock to check how long your brew has been boiling. For most brews this should be 4 minutes. Use empty bottles to take the brew out of the cauldron when ready.",
+			"Still (distilling)\n" +
+				"\n" +
+				"Sometimes you want to increase the amount of alcohol on your brew. This is done by distilling it. Simply run your brews through a brewing stand with glowstone as the filter (where you'd otherwise put blaze powder). Multiple still runs are possible!",
+			"Aging Barrels\n" +
+				"\n" +
+				"Brews need some time before they can be drinkable. They usually have to age in a barrel for about 3 years (in-game days). \n" +
+				"\n" +
+				"You can make a small barrel with 8 wooden stairs and a sign reading \"barrel\".",
+			"Aging Barrels\n" +
+				"\n" +
+				"If you want to make a bigger one use 16 wooden stairs, 16 planks, 5 fences for the legs and spigot, and a sign at the top of the front-side reading \"barrel\".\n" +
+				"\n" +
+				"You can also age brews in regular barrel blocks.",
+			"Brew Sealing Table\n" +
+				"\n" +
+				"When your brew is finished you can seal it in a brew sealing table. Make this on a crafting table with 4 planks and 2 bottles. Simply insert the brews and wait for them to plop. Sealed brews can no longer be aged or otherwise edited, ready to drink!",
+			"Sink\n" +
+				"\n" +
+				"Sometimes brews don't come out exactly as intended. To empty a bottle of it's content hold shift and right-click a hopper. The ruined brew will be disposed of and your bottle ready to receive the next batch.",
+			"Chapter 2: Cider\n" +
+				"\n" +
+				"To make cider you need only 2 ingredients: juice and yeast. Pick a fruit of your choice (most will work) and turn it into juice. Add 3 bottles of juice to the brewing cauldron followed by the yeast. Boil for 4 minutes, age for 3 years.",
+			"Cider specials\n" +
+				"\n" +
+				"Forest Cider\n" +
+				"- blueberry juice\n" +
+				"- elderberry juice\n" +
+				"- raspberry juice\n" +
+				"- blackberry juice\n" +
+				"- strawberry juice\n" +
+				"\n" +
+				"Jungle Cider\n" +
+				"- coconut milk\n" +
+				"- pineapple juice\n" +
+				"- melon juice\n" +
+				"- oak apple juice",
+			"Chapter 3: Beer\n" +
+				"\n" +
+				"Beer is a wheat based brew. Simply add 6 wheat to the brewing cauldron followed by the yeast. Boil for 4 minutes, age for 3 years.",
+			"Beer variation\n" +
+				"\n" +
+				"Weißner\n" +
+				"- double wheat\n" +
+				"IPA\n" +
+				"- add cilantro\n" +
+				"Blonde\n" +
+				"- add flour and sugar\n" +
+				"Amber\n" +
+				"- flour & brown sugar\n" +
+				"Darkbeer\n" +
+				"- add molasses\n" +
+				"Double / Tripel / ...\n" +
+				"- add 2-6 sugar",
+			"Beer variation\n" +
+				"\n" +
+				"At times a whiff of fruit isn't too bad for a beer.\n" +
+				"\n" +
+				"Also try Michelada:\n" +
+				"- 2 beers\n" +
+				"- 2 tomato juice\n" +
+				"- onion\n" +
+				"- cilantro\n" +
+				"- lime juice\n" +
+				"- salt",
+			"Chapter 4: Wine\n" +
+				"\n" +
+				"Wines can be made from several fruits:\n" +
+				"- sweet berries\n" +
+				"- glow berries\n" +
+				"- grapes\n" +
+				"- dragon fruit\n" +
+				"\n" +
+				"Simply add 3 to the brewing cauldron followed by the yeast. Boil for 4 minutes, age for 3 years.",
+			"Wine variation\n" +
+				"\n" +
+				"For something a little thicker: port -- try doubling the base ingredient.",
+			"Chapter 5: Mead\n" +
+				"\n" +
+				"To make mead simply put 3 bottles of honey into the brewing cauldron followed by the yeast. Boil for 4 minutes, age for 3 years. Also available:\n" +
+				"- apple mead\n" +
+				"- oak apple mead\n" +
+				"- golden apple mead\n" +
+				"- cherry mead\n" +
+				"- lime mead",
+			"Mead variation\n" +
+				"\n" +
+				"Spiced Mead\n" +
+				"- 3 honey\n" +
+				"- black pepper\n" +
+				"- curry leaf\n" +
+				"\n" +
+				"Psychedelic Mead\n" +
+				"- 3 honey\n" +
+				"- crimson fungus\n" +
+				"- warped fungus",
+			"Chapter 6: Punch\n" +
+				"\n" +
+				"Fun for every party! Mix 3 bottles of sweet berry wine in a brewing cauldron with 3 apples, peaches, or pumpkins.\n" +
+				"\n" +
+				"(Halloween recipe)\n" +
+				"Spooky Punch\n" +
+				"- 3 rotten flesh\n" +
+				"- nether wart\n" +
+				"- spider eye ",
+			"Chapter 7: Liquor\n" +
+				"\n" +
+				"Gin\n" +
+				"- 12 spruce leaves\n" +
+				"- double distilled\n" +
+				"\n" +
+				"Tequila\n" +
+				"- 12 cacti\n" +
+				"- single distilled\n" +
+				"\n" +
+				"Vodka\n" +
+				"- 12 potatoes\n" +
+				"- triple distilled");
+		bookMeta.setGeneration(BookMeta.Generation.COPY_OF_ORIGINAL);
+		book.setItemMeta(bookMeta);
+
+		player.getInventory().addItem(book);
 	}
 
 	public void cmdHelp(CommandSender sender, String[] args) {

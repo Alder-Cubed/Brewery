@@ -35,7 +35,6 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
@@ -70,28 +69,28 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.2.0</version>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-javadoc-plugin</artifactId>-->
+<!--				<version>3.2.0</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<phase>compile</phase>-->
+<!--						<goals>-->
+<!--							<goal>jar</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
 
-				<configuration>
-					<doctitle>Brewery - Javadocs</doctitle>
-					<windowtitle>Brewery - Javadocs</windowtitle>
-					<additionalOptions>-Xdoclint:none</additionalOptions>
-					<quiet>true</quiet>
-					<detectOfflineLinks>false</detectOfflineLinks>
-					<noqualifier>org.bukkit.*</noqualifier>
-				</configuration>
-			</plugin>
+<!--				<configuration>-->
+<!--					<doctitle>Brewery - Javadocs</doctitle>-->
+<!--					<windowtitle>Brewery - Javadocs</windowtitle>-->
+<!--					<additionalOptions>-Xdoclint:none</additionalOptions>-->
+<!--					<quiet>true</quiet>-->
+<!--					<detectOfflineLinks>false</detectOfflineLinks>-->
+<!--					<noqualifier>org.bukkit.*</noqualifier>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
@@ -267,7 +266,7 @@
 			<!-- https://github.com/Slimefun/Slimefun4/releases -->
 			<groupId>com.github.slimefun</groupId>
 			<artifactId>Slimefun4</artifactId>
-			<version>RC-24</version>
+			<version>RC-27</version>
 			<scope>provided</scope>
 		</dependency>
 		<!--<dependency>
@@ -277,13 +276,13 @@
 			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>-->
-		<dependency>
-			<!-- https://mythiccraft.io/index.php?pages/official-mythiclib-dev/ -->
-			<groupId>io.lumine</groupId>
-			<artifactId>MythicLib</artifactId>
-			<version>1.0.19</version>
-			<scope>provided</scope>
-		</dependency>
+<!--		<dependency>-->
+<!--			&lt;!&ndash; https://mythiccraft.io/index.php?pages/official-mythiclib-dev/ &ndash;&gt;-->
+<!--			<groupId>io.lumine</groupId>-->
+<!--			<artifactId>MythicLib</artifactId>-->
+<!--			<version>1.0.19</version>-->
+<!--			<scope>provided</scope>-->
+<!--		</dependency>-->
 		<dependency>
 			<!-- https://github.com/ChestShop-authors/ChestShop-3/releases -->
 			<groupId>com.acrobot.chestshop</groupId>
